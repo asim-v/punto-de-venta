@@ -1,6 +1,7 @@
 # CinePOS (React + Vite + Tailwind + Firebase Hosting)
 
 Sistema de punto de venta para cine con flujo de venta modular, vista de cliente y vista de administración. Soporta catálogo **en vivo** desde TMDB o **local** de respaldo.
+![Vista previa del proyecto](screenshot.jpg)
 
 ---
 
@@ -61,7 +62,7 @@ Sistema de punto de venta para cine con flujo de venta modular, vista de cliente
 
 ---
 
-## Componentes (qué hace cada uno)
+## Componentes
 
 - **Navbar**: barra superior; búsqueda placeholder.
 - **ClasifFilter**: chips de clasificación; actualiza `clasifSel`.
@@ -77,7 +78,7 @@ Sistema de punto de venta para cine con flujo de venta modular, vista de cliente
 
 ---
 
-## Store (API útil)
+## Store
 
 - `getOcupados(salaKey, peliculaId): Set<string>`
 - `bookSeats({ salaKey, peliculaId, asientos })`
@@ -98,14 +99,14 @@ VITE_TMDB_BEARER=eyJhbGciOi...   # Token "v4 auth" de TMDB
 VITE_TMDB_API_KEY=xxxxxxxxxxxxxxxx # API Key v3 de TMDB
 ```
 
-Si no hay credenciales, el toggle “Películas reales (TMDB)” mostrará catálogo local de respaldo.
+
 
 ---
 
 ## Requisitos
 
 - **Node.js** 18+ (recomendado 20 LTS)
-- **npm** 9+ (o pnpm/yarn si prefieres)
+- **npm** 9+ (o pnpm/yarn )
 
 ---
 
@@ -165,7 +166,7 @@ firebase deploy
 
 ---
 
-## Flujo de venta (resumen)
+## Flujo de venta
 
 1. Selecciona **clasificación** y **película**.
 2. Ingresa **fecha de nacimiento**. Debe cumplir la clasificación.
@@ -174,13 +175,6 @@ firebase deploy
 5. `Confirmar venta` → `bookSeats` → `recordSale` → **Ticket** → asientos quedan bloqueados.
 
 ---
-
-## Casos de prueba sugeridos
-
-- **AA, 10 años**: 2 boletos en infantil, pago suficiente → ticket emitido, cambio correcto.
-- **B15, 14 años**: bloqueo por edad.
-- **C, 22 años**: intentar asiento ocupado → error, reintentar selección.
-- **B15, 17 años**: pago justo vs. redondeo → solicitud de monto adicional si falta.
 
 ---
 
